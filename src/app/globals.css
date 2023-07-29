@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*** Layout ***/
+.navbar {
+  @apply 
+      flex justify-between items-center 
+      p-4 
+      bg-orange-500;
+}
+
+.nav-button {
+  @apply 
+      flex 
+      px-4 py-2 
+      rounded-lg border-2 border-orange-50
+      text-orange-50 
+      hover:bg-orange-50 hover:text-orange-500 duration-150 
+      cursor-pointer;
+}
+
+/*** Home Page ***/
+.main-grid {
+  @apply
+      grid container mx-auto
+      sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5
+      px-2 gap-2 lg:gap-4;
+}
+
+/*** Admin ***/
+
+/* Admin Login Page */
+.login-main {
+  @apply
+    flex justify-center items-center
+    h-screen;
+}
+
+.login-wrapper {
+  @apply
+    flex flex-col justify-center items-center
+    mx-2 p-10 rounded-xl 
+    w-full md:w-2/3 lg:w-1/3
+    bg-orange-100 shadow-md;
+}
+
+.input {
+  @apply
+    p-2 rounded-lg w-full
+  bg-orange-50
+  focus:outline-orange-500;
+}
+
+/** Car Card **/
+.card-section {
+  @apply 
+      flex flex-col 
+      rounded-lg my-4
+      bg-orange-100 shadow-md; 
+}
+
+.card-body {
+  @apply 
+      flex flex-col
+      p-4;
+}
+
+.price-n-button {
+  @apply 
+      flex flex-col;
+}
+
+.price {
+  @apply 
+      flex justify-start
+      font-bold;
+}
+
+.button {
+  @apply 
+      flex justify-end;
+}
+
+.submit-button {
+  @apply 
+      flex justify-center 
+      p-1 mt-4 w-2/3 
+      border-2 rounded-md border-orange-500 
+      hover:bg-orange-500 hover:text-orange-100 duration-150 
+      cursor-pointer;
+}
