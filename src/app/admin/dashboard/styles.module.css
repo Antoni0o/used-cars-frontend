@@ -15,12 +15,13 @@
   @apply
     bg-orange-300 
     py-1 px-2 rounded-t-lg cursor-pointer
-    hover:border-orange-300 hover:brightness-150 duration-150;
+    duration-150;
 }
 
 .notSelected {
   @apply
-    border-b-4 border-orange-200 opacity-75;
+    border-b-4 border-orange-200 opacity-75
+    hover:opacity-100;
 }
 
 .table {
