@@ -6,6 +6,7 @@ import { redirect } from "next/navigation"
 import { useState } from "react";
 
 import styles from './styles.module.css';
+import EditModal from "@/components/EditModalComponent/EditModal";
 
 export default function AdminDashboard() {
   /* const { status } = useSession({
@@ -32,13 +33,16 @@ export default function AdminDashboard() {
           <tbody>
             {tableInfo
               ?
-              <TableRow name="Carro"></TableRow>
+              <TableRow name="Carro" tableInfo={tableInfo}></TableRow>
               :
-              <TableRow name="Usuário"></TableRow>
+              <TableRow name="Usuário" tableInfo={tableInfo}></TableRow>
             }
           </tbody>
         </table>
-      </section >
+        <div className={styles.buttonCreate}>
+          <span>Criar {tableInfo ? "Carro" : "Usuário"}</span>
+        </div>
+      </section>
     </main >
   )
 }

@@ -1,0 +1,4 @@
+.buttons {
+  @apply
+    flex justify-between items-end w-full;
+}

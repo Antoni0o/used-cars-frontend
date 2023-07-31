@@ -1,0 +1,15 @@
+.overlay {
+  @apply
+  flex justify-center items-center 
+  bg-slate-950 bg-opacity-50
+  overflow-x-hidden overflow-y-auto 
+  fixed inset-0 z-50 
+  outline-none focus:outline-none;
+}
+
+.wrapper {
+  @apply 
+    relative w-auto my-6 mx-auto max-w-3xl
+    flex flex-col
+    bg-orange-100 p-4 rounded-lg;
+}

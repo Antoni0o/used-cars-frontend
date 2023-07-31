@@ -36,3 +36,20 @@
     bg-orange-300
     p-2 rounded-b-lg rounded-tr-lg;
 }
+
+.buttonCreate {
+  @apply
+    flex justify-end items-center
+    bg-orange-200 rounded-lg p-2 mt-2;
+}
+
+.buttonCreate span {
+  @apply
+    bg-orange-700 text-orange-50 rounded-lg p-2
+    hover:brightness-125 duration-150 cursor-pointer;
+}
+
+.buttons {
+  @apply
+    flex justify-between items-end w-full;
+}
