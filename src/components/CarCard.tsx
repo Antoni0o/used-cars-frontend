@@ -1,15 +1,20 @@
-export default function CarCard() {
+import { Car } from "@/types/Car";
+
+export default function CarCard({ photoUrl, model, brand, price }: Car) {
   return (
     <section className="card-section">
-      <img className="rounded-lg" src="https://carwow-uk-wp-3.imgix.net/18015-MC20BluInfinito-scaled-e1666008987698.jpg" alt="car" />
+      <img className="rounded-lg" src={photoUrl} alt="car" />
       <div className="card-body">
         <div className="title-n-model">
-          <h2 className="font-bold text-xl">Modelo</h2>
-          <h3 className="opacity-75">Marca</h3>
+          <h2 className="font-bold text-xl">{model}</h2>
+          <h3 className="opacity-75">{brand}</h3>
         </div>
         <div className="price-n-button">
           <div className="price">
-            <h2 className="text-xl">R$ 10.000.000,00</h2>
+            <h2 className="text-xl">{price.toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL"
+            })}</h2>
           </div>
           <div className="button">
             <div className="submit-button">Ver Mais</div>

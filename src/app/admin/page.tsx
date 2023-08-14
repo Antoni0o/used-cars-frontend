@@ -1,7 +1,8 @@
 "use client";
 import { signIn } from "next-auth/react";
-import { useSearchParams, useRouter } from "next/navigation";
-import { ChangeEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { BiLeftArrowAlt } from "react-icons/bi"
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -12,25 +13,23 @@ export default function AdminLogin() {
   });
   const [error, setError] = useState("");
 
-  const searchParams = useSearchParams();
   const callbackUrl = "/admin/dashboard";
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
       setLoading(true);
-      setFormValues({ username: "", password: "" });
 
       const res = await signIn("credentials", {
-        redirect: false,
+        redirect: true,
         username: formValues.username,
         password: formValues.password,
         callbackUrl,
       });
 
+      setFormValues({ username: "", password: "" });
       setLoading(false);
 
-      console.log(res);
       if (!res?.error) {
         router.push(callbackUrl);
       } else {
@@ -38,7 +37,7 @@ export default function AdminLogin() {
       }
     } catch (error) {
       setLoading(false);
-      setError(error);
+      setError(error.message);
     }
   };
 
@@ -50,7 +49,10 @@ export default function AdminLogin() {
   return (
     <main className="login-main">
       <div className="login-wrapper">
-        <h2 className="font-bold text-4xl mb-4">Login</h2>
+        <div className="flex justify-between w-full">
+          <h1 className="flex items-center text-md cursor-pointer hover:underline" onClick={() => router.push("/")}> <BiLeftArrowAlt />&nbsp;Voltar</h1>
+          <h2 className="font-bold text-4xl my-4">Login</h2>
+        </div>
         <form action="post" className="flex flex-col items-center gap-4 w-full" onSubmit={onSubmit}>
           {error && (
             <p className="text-center bg-red-300 p-2 mb-4 rounded-lg">{error}</p>
@@ -80,6 +82,6 @@ export default function AdminLogin() {
           </button>
         </form>
       </div>
-    </main>
+    </main >
   )
 }

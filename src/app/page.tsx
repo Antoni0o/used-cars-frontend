@@ -1,9 +1,23 @@
 "use client";
 import CarCard from '@/components/CarCard'
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { api } from './api';
+import { Car } from '@/types/Car';
 
 export default function Home() {
   const router = useRouter();
+  const [carData, setCarData] = useState<Car[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    api
+      .get('/cars/all')
+      .then((res) => {
+        setCarData(res.data);
+        setLoading(false);
+      });
+  }, [])
 
   return (
     <>
@@ -18,27 +32,20 @@ export default function Home() {
       </nav>
 
       <main className='main-grid'>
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
+        {loading
+          ? 'Loading...'
+          : carData
+            ? carData.map((car) =>
+              <CarCard
+                key={car.id}
+                id={car.id}
+                model={car.model}
+                brand={car.brand}
+                photoUrl={car.photoUrl}
+                price={car.price}
+              />)
+            : 'No cars available'
+        }
       </main>
     </>
   )

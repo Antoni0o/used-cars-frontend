@@ -3,11 +3,12 @@ import EditModal from "./EditModalComponent/EditModal";
 import styles from "./tableRow.module.css";
 
 type ITableRowProps = {
+  id: string;
   name: string;
   tableInfo: boolean;
 }
 
-export default function TableRow({ name, tableInfo }: ITableRowProps) {
+export default function TableRow({ id, name, tableInfo }: ITableRowProps) {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   return (

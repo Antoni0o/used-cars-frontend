@@ -19,8 +19,8 @@ export default function EditModal({ tableInfo, isOpen, onClose }: IEditModalProp
           </div>
           {
             tableInfo
-              ? <EditCarForm />
-              : <EditUserForm />
+              ? <EditCarForm onClose={onClose} />
+              : <EditUserForm onClose={onClose} />
           }
         </ModalOverlay >
       ) : null

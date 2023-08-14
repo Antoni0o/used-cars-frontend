@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { api } from "../..";
 
 type IResponse = {
   data: AxiosResponse;
@@ -13,6 +14,7 @@ export const authOptions: AuthOptions = {
   },
   pages: {
     signIn: "/admin",
+    signOut: "/",
   },
   providers: [
     CredentialsProvider({
@@ -22,7 +24,7 @@ export const authOptions: AuthOptions = {
         password: { type: "passowrd", placeholder: "Digite a senha" },
       },
       async authorize(credentials) {
-        const res = await axios.post("http://localhost:8080/login", {
+        const res = await api.post("/login", {
           name: credentials?.username,
           password: credentials?.password,
         });
